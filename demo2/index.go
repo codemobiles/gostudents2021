@@ -1,10 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type user struct {
 	username string
 	password string
+}
+
+func (_ user) clear() user {
+	return user{username: "", password: ""}
+}
+
+func (clone user) toUpper() user {
+	return user{
+		username: strings.ToUpper(clone.username),
+		password: strings.ToUpper(clone.password),
+	}
 }
 
 // product {name, price, qty}
@@ -16,4 +30,9 @@ func main() {
 	_ = u
 	fmt.Println(u)
 	fmt.Println(u.username)
+	// u = u.clear()
+	fmt.Println("Username : " + u.username)
+
+	u = u.toUpper()
+	fmt.Printf("%v", u)
 }
