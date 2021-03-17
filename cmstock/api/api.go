@@ -1,6 +1,7 @@
 package api
 
 import (
+	"cmstock/db"
 	"fmt"
 
 	"github.com/gin-gonic/gin"
@@ -11,6 +12,7 @@ func Test() {
 }
 
 func Setup(router *gin.Engine) {
+	db.SetupDB()
 	SetupAuthenAPI(router)
 	SetupProductAPI(router)
 	SetupTransactionAPI(router)

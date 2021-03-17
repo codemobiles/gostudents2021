@@ -1,7 +1,7 @@
 package db
 
 import (
-	"main/model"
+	"cmstock/model"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
