@@ -13,5 +13,9 @@ func main() {
 		c.String(http.StatusOK, "Ok")
 	})
 
+	r.GET("/login", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"username": "admin", "password": "1234"})
+	})
+
 	r.Run(":8081")
 }
