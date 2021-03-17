@@ -10,6 +10,11 @@ type user struct {
 	password string
 }
 
+func (self *user) empty() {
+	self.username = ""
+	self.password = ""
+}
+
 func (_ user) clear() user {
 	return user{username: "", password: ""}
 }
@@ -35,4 +40,9 @@ func main() {
 
 	u = u.toUpper()
 	fmt.Printf("%v", u)
+
+	u1 := user{username: "admin", password: "1234"}
+	u1.empty()
+	fmt.Printf("\nu1 is %v\n", u1)
+
 }
