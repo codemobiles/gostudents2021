@@ -1,7 +1,15 @@
 package api
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+)
 
 func Test() {
 	fmt.Println("Test API")
+}
+
+func Setup(router *gin.Engine)  {
+	
 }
