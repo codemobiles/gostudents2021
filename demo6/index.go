@@ -1,9 +1,17 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 	r := gin.Default()
-	_ = r
 
+	r.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "Ok")
+	})
+
+	r.Run(":8081")
 }
