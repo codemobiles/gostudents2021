@@ -13,4 +13,4 @@ func main() {
 	router := gin.Default()
 	api.Setup(router)
 	router.Run(":8081")
-}
+} 
