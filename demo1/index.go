@@ -37,13 +37,20 @@ func main() {
 	fmt.Printf("Dog is %s\n", dictOfWords["dog"])
 	fmt.Printf("THB is %.2f\n", dictOfRate["THB"])
 
-
 	// Condition
 	if tmp1 == "Hellod" {
-		fmt.Printf("tmp1 is Hello")
-	}else{
-		fmt.Printf("tmp1 is NOT Hello")
+		fmt.Printf("tmp1 is Hello\n")
+	} else {
+		fmt.Printf("tmp1 is NOT Hello\n")
 	}
+
+	if result := getResult(); result == "ok" {
+		fmt.Printf("result is %s\n", result)
+	}
+}
+
+func getResult() string {
+	return "ok"
 }
 
 func fn1() {
