@@ -14,7 +14,8 @@ func main() {
 	})
 
 	r.GET("/login", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"username": "admin", "password": "1234"})
+		username, password := c.Query("username"), c.Query("password")
+		c.JSON(http.StatusOK, gin.H{"username": username, "password": password})
 	})
 
 	r.Run(":8081")
