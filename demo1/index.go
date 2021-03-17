@@ -24,4 +24,24 @@ func main() {
 	fmt.Println("Lek")
 	fmt.Printf("ค่ามันคือ %v\n", tmp6)
 	fmt.Printf("หลักสูตรทั้งหมด %v\n", tmp7)
+
+	// Call functions
+	fn1()
+	fnNumber2(2)
+	fn3(1, 3)
+}
+
+func fn1() {
+	fmt.Println("Fn1")
+}
+
+// camel - fnNumber
+// Pacal - FnNumber
+// snake - fn_number
+func fnNumber2(count int) {
+	fmt.Printf("Count: %d\n", count)
+}
+
+func fn3(a int, b int) int {
+	return a + b
 }
