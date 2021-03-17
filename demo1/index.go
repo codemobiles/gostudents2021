@@ -29,6 +29,21 @@ func main() {
 	fn1()
 	fnNumber2(2)
 	fn3(1, 3)
+
+	// Collection datatype
+	var dictOfWords map[string]string = map[string]string{"dog": "หมา", "cat": "แมว"}
+	dictOfRate := map[string]float32{"THB": 30.12, "JP": 14.2}
+	fmt.Printf("%v\n", dictOfWords)
+	fmt.Printf("Dog is %s\n", dictOfWords["dog"])
+	fmt.Printf("THB is %.2f\n", dictOfRate["THB"])
+
+
+	// Condition
+	if tmp1 == "Hellod" {
+		fmt.Printf("tmp1 is Hello")
+	}else{
+		fmt.Printf("tmp1 is NOT Hello")
+	}
 }
 
 func fn1() {
