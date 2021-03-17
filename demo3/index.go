@@ -11,6 +11,10 @@ func main() {
 	fmt.Printf(tmp0)
 }
 
+func power(obj *int){
+	
+}
+
 func clear(obj *string) {
 	*obj = "Clear"
 }
