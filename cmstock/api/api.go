@@ -10,6 +10,8 @@ func Test() {
 	fmt.Println("Test API")
 }
 
-func Setup(router *gin.Engine)  {
-	
+func Setup(router *gin.Engine) {
+	SetupAuthenAPI(router)
+	SetupProductAPI(router)
+	SetupProductAPI(router)
 }
