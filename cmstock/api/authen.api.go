@@ -18,10 +18,11 @@ func SetupAuthenAPI(router *gin.Engine) {
 func login(c *gin.Context) {
 	var user model.User
 	if err := c.ShouldBind(&user); err != nil {
-		c.JSON(http.StatusOK, user)
-	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"result": "failed"})
+		return
 	}
+	c.JSON(http.StatusOK, user)
+
 }
 
 func register(c *gin.Context) {
