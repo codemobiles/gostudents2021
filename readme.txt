@@ -8,3 +8,6 @@ https://marketplace.visualstudio.com/items?itemName=doggy8088.go-extension-pack
 
 # gomon
 https://github.com/c9s/gomon
+
+# create go module
+go mod init main
