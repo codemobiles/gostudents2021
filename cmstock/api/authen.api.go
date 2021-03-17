@@ -10,7 +10,7 @@ import (
 func SetupAuthenAPI(router *gin.Engine) {
 	fmt.Println("SetupAuthenAPI is ready")
 	authenAPI := router.Group("/api/v2")
-	authenAPI.GET("/login", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"result": "login"})
+	authenAPI.GET("/authen", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"result": "authen"})
 	})
 }
