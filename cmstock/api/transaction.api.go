@@ -3,7 +3,9 @@ package api
 import (
 	"cmstock/db"
 	"cmstock/interceptor"
+	"cmstock/model"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -36,6 +38,13 @@ func getTransaction(c *gin.Context) {
 }
 
 func createTransaction(c *gin.Context) {
-	username := c.GetString("jwt_username")
-	c.String(http.StatusOK, username)
+	var transaction model.Transaction
+	if err := c.ShouldBind(&transaction); err == nil {
+		transaction.StaffID = c.GetString("jwt_staff_id")
+		transaction.CreatedAt = time.Now()
+		db.GetDB().Create(&transaction)
+		c.JSON(http.StatusOK, gin.H{"result": "ok", "data": transaction})
+	} else {
+		c.JSON(404, gin.H{"result": "nok"})
+	}
 }
