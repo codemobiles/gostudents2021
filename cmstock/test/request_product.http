@@ -12,7 +12,7 @@ GET http://localhost:8081/api/v2/product?keyword=NodeMCU HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTYwNDg0MjAsImlkIjoxLCJsZXZlbCI6Im5vcm1hbCIsInVzZXJuYW1lIjoiYWRtaW4ifQ.Zm92-MbcVJwqhflqkb1pkVCPbzTplbTmz_fLhgnVA6M
 
 ### Get Product by ID 
-GET http://localhost:8081/api/v2/product/40 HTTP/1.1
+GET http://localhost:8081/api/v2/product/5 HTTP/1.1
 
 
 
