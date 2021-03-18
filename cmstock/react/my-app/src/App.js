@@ -5,7 +5,8 @@ export default function App() {
 
 
   React.useEffect(async () => {
-    const result = await Axios.get("https://codemobiles.com/adhoc/youtubes/index_new.php?username=admin&password=password&type=foods")
+    const url = "https://codemobiles.com/adhoc/youtubes/index_new.php?username=admin&password=password&type=foods"
+    const result = await Axios.get(url)
     console.log(result.data)
   }, [])
 
