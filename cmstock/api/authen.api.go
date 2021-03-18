@@ -1,6 +1,7 @@
 package api
 
 import (
+	"cmstock/db"
 	"cmstock/model"
 	"fmt"
 	"net/http"
@@ -18,7 +19,7 @@ func SetupAuthenAPI(router *gin.Engine) {
 func login(c *gin.Context) {
 	var user model.User
 	if err := c.ShouldBind(&user); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"result": "failed"})
+		c.JSON(http.StatusBadRequest, gin.H{"result": "json binding error"})
 		return
 	}
 	c.JSON(http.StatusOK, user)
@@ -26,5 +27,16 @@ func login(c *gin.Context) {
 }
 
 func register(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"result": "register"})
+	var user model.User
+	if err := c.ShouldBind(&user); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"result": "json binding error"})
+		return
+	}
+
+	if err := db.GetDB().Create(&user).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"result": "insert error"})
+		return
+	}
+
+	c.JSON(http.StatusOK, user)
 }
