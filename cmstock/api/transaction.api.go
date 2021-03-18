@@ -1,8 +1,8 @@
 package api
 
 import (
-	"main/db"
-	"main/interceptor"
+	"cmstock/db"
+	"cmstock/interceptor"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -36,6 +36,6 @@ func getTransaction(c *gin.Context) {
 }
 
 func createTransaction(c *gin.Context) {
-	userId := c.GetString("jwt_staff_id")
-	c.String(http.StatusOK, userId)
+	username := c.GetString("jwt_username")
+	c.String(http.StatusOK, username)
 }

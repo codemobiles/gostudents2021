@@ -44,11 +44,12 @@ func JwtVerify(c *gin.Context) {
 		fmt.Println(claims)
 
 		staffID := fmt.Sprintf("%v", claims["id"])
-		username := fmt.Sprintf("%v", claims["jwt_username"])
-		level := fmt.Sprintf("%v", claims["jwt_level"])
+		username := fmt.Sprintf("%v", claims["username"])
+		level := fmt.Sprintf("%v", claims["level"])
 		c.Set("jwt_staff_id", staffID)
 		c.Set("jwt_username", username)
 		c.Set("jwt_level", level)
+
 
 		c.Next()
 	} else {
