@@ -35,7 +35,9 @@ func login(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"result": "ok"})
+
+	token := interceptor.JwtSign(queryUser)
+		c.JSON(200, gin.H{"result": "ok", "token": token})
 
 }
 
