@@ -7,6 +7,10 @@ import (
 )
 
 func VerifyIt(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"result": "hey"})
-	c.Abort()
+	if token := c.Query("token"); token == "1234" {
+		c.Next()
+	} else {
+		c.String(http.StatusOK, "Error no token")
+		c.Abort()
+	}
 }
