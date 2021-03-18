@@ -3,9 +3,7 @@ package api
 import (
 	"main/db"
 	"main/interceptor"
-	"main/model"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -38,5 +36,6 @@ func getTransaction(c *gin.Context) {
 }
 
 func createTransaction(c *gin.Context) {
-	
+	userId := c.GetString("jwt_staff_id")
+	c.String(http.StatusOK, userId)
 }
