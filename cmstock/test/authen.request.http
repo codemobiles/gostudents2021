@@ -13,3 +13,4 @@ Content-Type: application/json
 
 ### get product
 GET http://localhost:8081/api/v2/product?token=1234 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTYwNDE5MDQsImlkIjoxLCJsZXZlbCI6Im5vcm1hbCIsInVzZXJuYW1lIjoiYWRtaW4ifQ.AV6Xw7na0QYAzRoWLqKvnDB8TMPumUeT1_T7vxcJFAU

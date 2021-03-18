@@ -11,7 +11,8 @@ import (
 func SetupProductAPI(router *gin.Engine) {
 	fmt.Println("SetupProductAPI is ready")
 	productAPI := router.Group("/api/v2")
-	productAPI.GET("/product", interceptor.VerifyIt, getProduct)
+	// productAPI.GET("/product", interceptor.VerifyIt, getProduct)
+	productAPI.GET("/product", interceptor.JwtVerify, getProduct)
 }
 
 func getProduct(c *gin.Context) {
