@@ -1,6 +1,14 @@
 import React from 'react'
+import Axios from 'axios'
 
 export default function App() {
+
+
+  React.useEffect(async () => {
+    const result = await Axios.get("https://codemobiles.com/adhoc/youtubes/index_new.php?username=admin&password=password&type=foods")
+    console.log(result.data)
+  }, [])
+
   return (
     <div>
       <h1>CodeMobiles</h1>
