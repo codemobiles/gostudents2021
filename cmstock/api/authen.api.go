@@ -23,7 +23,19 @@ func login(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"result": "json binding error"})
 		return
 	}
-	c.JSON(http.StatusOK, user)
+
+	var queryUser model.User
+	if err := db.GetDB().First(&queryUser, "username=?", user.Username).Error; err != nil {
+		c.JSON(http.StatusOK, gin.H{"result": "invalid username"})
+		return
+	}
+
+	if !checkPasswordHash(user.Password, queryUser.Password) {
+		c.JSON(http.StatusOK, gin.H{"result": "invalid password"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"result": "ok"})
 
 }
 
