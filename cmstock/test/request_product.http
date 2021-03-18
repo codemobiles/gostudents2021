@@ -5,11 +5,11 @@ GET http://localhost:8081/api/v2/product HTTP/1.1
 
 ### Get Product with Token
 GET http://localhost:8081/api/v2/product HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTYwNDI3NDYsImlkIjoxLCJsZXZlbCI6Im5vcm1hbCIsInVzZXJuYW1lIjoiYWRtaW4ifQ.91jdPSsAqaG9kahIS8lCVUqOVacpg2kp6nEQI_t-pwU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTYwNDg0MjAsImlkIjoxLCJsZXZlbCI6Im5vcm1hbCIsInVzZXJuYW1lIjoiYWRtaW4ifQ.Zm92-MbcVJwqhflqkb1pkVCPbzTplbTmz_fLhgnVA6M
 
 ### Get Product with keyword
-GET http://localhost:8081/api/v2/product?keyword=Ar HTTP/1.1
-
+GET http://localhost:8081/api/v2/product?keyword=NodeMCU HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTYwNDg0MjAsImlkIjoxLCJsZXZlbCI6Im5vcm1hbCIsInVzZXJuYW1lIjoiYWRtaW4ifQ.Zm92-MbcVJwqhflqkb1pkVCPbzTplbTmz_fLhgnVA6M
 
 ### Get Product by ID 
 GET http://localhost:8081/api/v2/product/40 HTTP/1.1
