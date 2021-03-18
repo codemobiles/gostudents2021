@@ -45,3 +45,11 @@ func getProduct(c *gin.Context) {
 
 	c.JSON(http.StatusOK, products)
 }
+
+
+// product := model.Product{}
+// product.Name = c.PostForm("name")
+// product.Stock, _ = strconv.ParseInt(c.PostForm("stock"), 10, 64)
+// product.Price, _ = strconv.ParseFloat(c.PostForm("price"), 64)
+// product.CreatedAt = time.Now()
+// db.GetDB().Create(&product)
