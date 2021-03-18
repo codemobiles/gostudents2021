@@ -22,6 +22,24 @@ func SetupProductAPI(router *gin.Engine) {
 	productAPI.GET("/product", interceptor.JwtVerify, getProduct)
 	productAPI.GET("/product/:id", getProductById)
 	productAPI.POST("/product", createProduct)
+	productAPI.DELETE("/product/:id", deleteProduct)
+	productAPI.PUT("/product", editProduct)
+}
+
+func editProduct(c *gin.Context) {
+	var product model.Product
+	id, _ := strconv.ParseInt(c.PostForm("id"), 10, 32)
+
+	product.ID = uint(id)
+	product.Name = c.PostForm("name")
+	product.Stock, _ = strconv.ParseInt(c.PostForm("stock"), 10, 64)
+	product.Price, _ = strconv.ParseFloat(c.PostForm("price"), 64)
+	product.CreatedAt = time.Now()
+	db.GetDB().Updates(&product)
+
+	image, _ := c.FormFile("image")
+	saveImage(image, &product, c)
+	c.JSON(http.StatusOK, gin.H{"result": product})
 }
 
 func getProductById(c *gin.Context) {
@@ -88,8 +106,6 @@ func fileExists(filename string) bool {
 	}
 	return !info.IsDir()
 }
-
-
 
 func deleteProduct(c *gin.Context) {
 

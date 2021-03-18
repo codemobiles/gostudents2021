@@ -71,7 +71,7 @@ Content-Type: image/png
 
 
 ### Delete
-DELETE http://localhost:8081/api/v2/product/16 HTTP/1.1
+DELETE http://localhost:8081/api/v2/product/13 HTTP/1.1
 
 
 ---------------------------------------------
