@@ -88,3 +88,12 @@ func fileExists(filename string) bool {
 	}
 	return !info.IsDir()
 }
+
+
+
+func deleteProduct(c *gin.Context) {
+
+	id, _ := strconv.ParseInt(c.Param("id"), 10, 32)
+	db.GetDB().Delete(&model.Product{}, id)
+	c.JSON(http.StatusOK, gin.H{"result": "ok"})
+}
