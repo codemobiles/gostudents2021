@@ -34,6 +34,8 @@ func register(c *gin.Context) {
 		return
 	}
 
+	user.Password, _ = hashPassword(user.Password)
+
 	if err := db.GetDB().Create(&user).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"result": "insert error"})
 		return
@@ -41,8 +43,6 @@ func register(c *gin.Context) {
 
 	c.JSON(http.StatusOK, user)
 }
-
-
 
 func checkPasswordHash(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
