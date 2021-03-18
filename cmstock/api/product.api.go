@@ -1,7 +1,9 @@
 package api
 
 import (
+	"cmstock/db"
 	"cmstock/interceptor"
+	"cmstock/model"
 	"fmt"
 	"net/http"
 
@@ -16,5 +18,10 @@ func SetupProductAPI(router *gin.Engine) {
 }
 
 func getProduct(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"result": []string{"iPhone", "Android", "iPad"}})
+	// c.JSON(http.StatusOK, gin.H{"result": []string{"iPhone", "Android", "iPad"}})
+
+	var products []model.Product
+
+	db.GetDB().Find(&products)
+	c.JSON(http.StatusOK, products)
 }
