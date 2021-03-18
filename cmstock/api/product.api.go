@@ -22,7 +22,7 @@ func SetupProductAPI(router *gin.Engine) {
 	productAPI.GET("/product", interceptor.JwtVerify, getProduct)
 	productAPI.GET("/product/:id", getProductById)
 	productAPI.POST("/product", createProduct)
-	productAPI.DELETE("/product/:id", deleteProduct)
+	productAPI.DELETE("/product/:id", deleteProduct)  
 	productAPI.PUT("/product", editProduct)
 }
 
