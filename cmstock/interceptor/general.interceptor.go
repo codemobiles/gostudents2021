@@ -8,4 +8,5 @@ import (
 
 func VerifyIt(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"result": "hey"})
+	c.Abort()
 }

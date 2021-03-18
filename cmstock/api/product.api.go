@@ -1,6 +1,7 @@
 package api
 
 import (
+	"cmstock/interceptor"
 	"fmt"
 	"net/http"
 
@@ -10,7 +11,7 @@ import (
 func SetupProductAPI(router *gin.Engine) {
 	fmt.Println("SetupProductAPI is ready")
 	productAPI := router.Group("/api/v2")
-	productAPI.GET("/product", getProduct)
+	productAPI.GET("/product", interceptor.VerifyIt, getProduct)
 }
 
 func getProduct(c *gin.Context) {
