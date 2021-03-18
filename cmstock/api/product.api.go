@@ -5,7 +5,10 @@ import (
 	"cmstock/interceptor"
 	"cmstock/model"
 	"fmt"
+	"mime/multipart"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -56,6 +59,32 @@ func createProduct(c *gin.Context) {
 	product.CreatedAt = time.Now()
 	db.GetDB().Create(&product)
 
-	c.JSON(http.StatusOK, product)
+	image, _ := c.FormFile("image")
+	saveImage(image, &product, c)
+	c.JSON(http.StatusOK, gin.H{"result": product})
 
+}
+
+func saveImage(image *multipart.FileHeader, product *model.Product, c *gin.Context) {
+	if image != nil {
+		runningDir, _ := os.Getwd()
+		product.Image = image.Filename
+		extension := filepath.Ext(image.Filename)
+		fileName := fmt.Sprintf("%d%s", product.ID, extension)
+		filePath := fmt.Sprintf("%s/uploaded/images/%s", runningDir, fileName)
+
+		if fileExists(filePath) {
+			os.Remove(filePath)
+		}
+		c.SaveUploadedFile(image, filePath)
+		db.GetDB().Model(&product).Update("image", fileName)
+	}
+}
+
+func fileExists(filename string) bool {
+	info, err := os.Stat(filename)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return !info.IsDir()
 }
