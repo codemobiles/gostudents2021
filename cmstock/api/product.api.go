@@ -6,6 +6,8 @@ import (
 	"cmstock/model"
 	"fmt"
 	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,6 +18,7 @@ func SetupProductAPI(router *gin.Engine) {
 	// productAPI.GET("/product", interceptor.VerifyIt, getProduct)
 	productAPI.GET("/product", interceptor.JwtVerify, getProduct)
 	productAPI.GET("/product/:id", getProductById)
+	productAPI.POST("/product", createProduct)
 }
 
 func getProductById(c *gin.Context) {
@@ -29,7 +32,6 @@ func getProductById(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, product)
 	}
-
 }
 
 func getProduct(c *gin.Context) {
@@ -46,10 +48,14 @@ func getProduct(c *gin.Context) {
 	c.JSON(http.StatusOK, products)
 }
 
+func createProduct(c *gin.Context) {
+	product := model.Product{}
+	product.Name = c.PostForm("name")
+	product.Stock, _ = strconv.ParseInt(c.PostForm("stock"), 10, 64)
+	product.Price, _ = strconv.ParseFloat(c.PostForm("price"), 64)
+	product.CreatedAt = time.Now()
+	db.GetDB().Create(&product)
 
-// product := model.Product{}
-// product.Name = c.PostForm("name")
-// product.Stock, _ = strconv.ParseInt(c.PostForm("stock"), 10, 64)
-// product.Price, _ = strconv.ParseFloat(c.PostForm("price"), 64)
-// product.CreatedAt = time.Now()
-// db.GetDB().Create(&product)
+	c.JSON(http.StatusOK, product)
+
+}
