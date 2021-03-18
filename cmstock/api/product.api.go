@@ -2,7 +2,6 @@ package api
 
 import (
 	"cmstock/db"
-	"cmstock/interceptor"
 	"cmstock/model"
 	"fmt"
 	"mime/multipart"
@@ -19,10 +18,10 @@ func SetupProductAPI(router *gin.Engine) {
 	fmt.Println("SetupProductAPI is ready")
 	productAPI := router.Group("/api/v2")
 	// productAPI.GET("/product", interceptor.VerifyIt, getProduct)
-	productAPI.GET("/product", interceptor.JwtVerify, getProduct)
+	productAPI.GET("/product" /*interceptor.JwtVerify*/, getProduct)
 	productAPI.GET("/product/:id", getProductById)
 	productAPI.POST("/product", createProduct)
-	productAPI.DELETE("/product/:id", deleteProduct)  
+	productAPI.DELETE("/product/:id", deleteProduct)
 	productAPI.PUT("/product", editProduct)
 }
 

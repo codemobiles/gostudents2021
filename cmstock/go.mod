@@ -8,4 +8,5 @@ require (
 	golang.org/x/crypto v0.0.0-20210317152858-513c2a44f670
 	gorm.io/driver/sqlite v1.1.4
 	gorm.io/gorm v1.21.3
+    github.com/itsjamie/gin-cors v0.0.0-20160420130702-97b4a9da7933
 )
