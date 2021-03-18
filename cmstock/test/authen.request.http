@@ -12,4 +12,4 @@ Content-Type: application/json
 {"username": "root", "password": "1234"}
 
 ### get product
-GET http://localhost:8081/api/v2/product HTTP/1.1
+GET http://localhost:8081/api/v2/product?token=1234 HTTP/1.1
