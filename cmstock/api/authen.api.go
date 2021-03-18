@@ -2,6 +2,7 @@ package api
 
 import (
 	"cmstock/db"
+	"cmstock/interceptor"
 	"cmstock/model"
 	"fmt"
 	"net/http"
@@ -35,9 +36,8 @@ func login(c *gin.Context) {
 		return
 	}
 
-
 	token := interceptor.JwtSign(queryUser)
-		c.JSON(200, gin.H{"result": "ok", "token": token})
+	c.JSON(200, gin.H{"result": "ok", "token": token})
 
 }
 
