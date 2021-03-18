@@ -21,7 +21,12 @@ func getProduct(c *gin.Context) {
 	// c.JSON(http.StatusOK, gin.H{"result": []string{"iPhone", "Android", "iPad"}})
 
 	var products []model.Product
+    if keyword := c.Query("keyword"); keyword != "" {
+		keyword = fmt.Sprintf("%%%s%%", keyword)
+		db.GetDB().Where("name like ?", keyword).Order("created_at DESC").Find(&products)
+	}
 
+	
 	db.GetDB().Find(&products)
 	c.JSON(http.StatusOK, products)
 }
