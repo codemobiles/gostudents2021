@@ -1,6 +1,9 @@
 go mod init main
 https://jmeubank.github.io/tdm-gcc/download/
 
+
+go get gorm.io/driver/mysql
+
 # create and run react 
 npx create-react-app my-app
 cd my-app
