@@ -1,7 +1,7 @@
 package api
 
 import (
-	"cmstock/db"
+	"app/db"
 	"fmt"
 
 	"github.com/gin-gonic/gin"

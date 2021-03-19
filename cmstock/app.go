@@ -1,7 +1,7 @@
 package main
 
 import (
-	"cmstock/api"
+	"app/api"
 	_ "fmt"
 	_ "os"
 	"time"

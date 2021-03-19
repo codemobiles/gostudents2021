@@ -1,7 +1,7 @@
 package interceptor
 
 import (
-	"cmstock/model"
+	"app/model"
 	"fmt"
 	"net/http"
 	"strings"
@@ -49,7 +49,6 @@ func JwtVerify(c *gin.Context) {
 		c.Set("jwt_staff_id", staffID)
 		c.Set("jwt_username", username)
 		c.Set("jwt_level", level)
-
 
 		c.Next()
 	} else {

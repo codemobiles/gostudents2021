@@ -1,8 +1,8 @@
 package api
 
 import (
-	"cmstock/db"
-	"cmstock/model"
+	"app/db"
+	"app/model"
 	"fmt"
 	"mime/multipart"
 	"net/http"

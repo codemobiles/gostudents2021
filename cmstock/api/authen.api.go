@@ -1,9 +1,9 @@
 package api
 
 import (
-	"cmstock/db"
-	"cmstock/interceptor"
-	"cmstock/model"
+	"app/db"
+	"app/interceptor"
+	"app/model"
 	"fmt"
 	"net/http"
 
